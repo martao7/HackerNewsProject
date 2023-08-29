@@ -3,8 +3,12 @@ import Search from "./Search";
 const Nav = ({ handleSearch }) => {
   return (
     <>
-      <Search handleSearch={handleSearch} />
-      <nav>Logo, Navigation</nav>
+      <div className="col">
+        <nav>Logo, Navigation</nav>
+      </div>
+      <div className="col d-flex justify-content-end">
+        <Search handleSearch={handleSearch} />
+      </div>
     </>
   );
 };

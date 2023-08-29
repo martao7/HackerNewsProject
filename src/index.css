@@ -11,6 +11,10 @@
   color: var(--hn-color2);
 }
 
+header {
+  line-height: 2.5rem;
+}
+
 #hits li:nth-child(even) {
   background-color: var(--hn-color5);
 }
