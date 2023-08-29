@@ -1,12 +1,21 @@
-import { useState, useEffect } from "react";
 import "./App.css";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 import Paginator from "./components/Paginator";
+import ItemList from "./components/ItemList";
+import Search from "./components/Search";
+import myData from "./fakeData.json";
+
+import { useState, useEffect } from "react";
+
 document.body.style.backgroundColor = "#011627";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [posts, setPosts] = useState([]);
-  const paging = false;
+  //prod
+  //const [posts, setPosts] = useState([]);
+
+  //test
+  const [posts, setPosts] = useState([...myData.hits]);
 
   useEffect(() => {
     fetch("http://hn.algolia.com/api/v1/search?query=react")
@@ -16,7 +25,7 @@ function App() {
       })
       .then((data) => {
         console.log("data", data);
-        setPosts(data.hits);
+        //setPosts(data.hits);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -24,38 +33,20 @@ function App() {
   return (
     <>
       <header className="container">
-        <nav>
-          Logo, Navigation, Search
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-        </nav>
+        <Nav />
+        <Search />
       </header>
 
       <main className="container">
         <div className="row">
-          <div className="col"></div>
-        </div>
-
-        <div className="row">
           <div className="col">
-            <ul className="list-group" id="hits">
-              {posts.length
-                ? posts.map((post, id) => (
-                    <li className="list-group-item" key={id}>
-                      {post.title}
-                    </li>
-                  ))
-                : "...loading"}
-            </ul>
+            <ItemList posts={posts} />
           </div>
         </div>
-        {paging && <Paginator />}
-      </main>
 
-      <footer className="container footer">
-        Click on the Vite and React logos to learn more
-      </footer>
+        <Paginator posts={posts} />
+      </main>
+      <Footer />
     </>
   );
 }
