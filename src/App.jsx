@@ -1,50 +1,40 @@
+import axios from "axios";
+import { useState } from "react";
+
 import "./App.css";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 import Paginator from "./components/Paginator";
 import ItemList from "./components/ItemList";
-import Search from "./components/Search";
 import myData from "./fakeData.json";
-
-import { useState, useEffect } from "react";
 
 document.body.style.backgroundColor = "#011627";
 
 function App() {
-  //prod
-  //const [posts, setPosts] = useState([]);
+  const [hits, setHits] = useState([...myData.hits]);
 
-  //test
-  const [posts, setPosts] = useState([...myData.hits]);
+  const handleSearch = async (topic) => {
+    const response = await axios.get(
+      `http://hn.algolia.com/api/v1/search?query=${topic}`
+    );
 
-  useEffect(() => {
-    fetch("http://hn.algolia.com/api/v1/search?query=react")
-      .then((res) => {
-        if (!res.ok) throw new Error(`Failed because of ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        //setPosts(data.hits);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    const searchData = response.data;
+    setHits(searchData.hits);
+  };
 
   return (
     <>
       <header className="container">
-        <Nav />
-        <Search />
+        <Nav handleSearch={handleSearch} />
       </header>
-
       <main className="container">
         <div className="row">
           <div className="col">
-            <ItemList posts={posts} />
+            <ItemList posts={hits} />
           </div>
         </div>
 
-        <Paginator posts={posts} />
+        <Paginator posts={hits} />
       </main>
       <Footer />
     </>
