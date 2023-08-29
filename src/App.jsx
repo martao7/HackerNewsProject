@@ -25,7 +25,9 @@ function App() {
   return (
     <>
       <header className="container">
-        <Nav handleSearch={handleSearch} />
+        <div className="d-flex row justify-content-end">
+          <Nav handleSearch={handleSearch} />
+        </div>
       </header>
       <main className="container">
         <div className="row">
