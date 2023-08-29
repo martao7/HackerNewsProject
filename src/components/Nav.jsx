@@ -1,8 +1,12 @@
-import React from "react";
 import Search from "./Search";
 
-function Nav() {
-  return <nav>Logo, Navigation</nav>;
-}
+const Nav = ({ handleSearch }) => {
+  return (
+    <>
+      <Search handleSearch={handleSearch} />
+      <nav>Logo, Navigation</nav>
+    </>
+  );
+};
 
 export default Nav;

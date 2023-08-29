@@ -1,7 +1,29 @@
-import React from "react";
+import { useState } from "react";
 
-function Search() {
-  return <>Such mich!</>;
-}
+const Search = ({ handleSearch }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = ({ target }) => {
+    setInputValue(target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    handleSearch(inputValue);
+  };
+
+  return (
+    <form className="container" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Enter topic..."
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <button type="sumbit">Search</button>
+    </form>
+  );
+};
 
 export default Search;
