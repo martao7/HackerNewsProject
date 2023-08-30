@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
 import Item from "./Item";
 
-function ItemList({ posts }) {
+function ItemList({ hits, isLoading }) {
   return (
     <ul className="list-group" id="hits">
-      {posts.length > 0
-        ? posts.map((post, index) => (
-            <Item post={post} key={index} id={index} />
-          ))
-        : "...loading"}
+      {!isLoading ? (
+        hits.map((hit, index) => <Item hit={hit} key={index} id={index} />)
+      ) : (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
     </ul>
   );
 }
