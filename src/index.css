@@ -4,11 +4,11 @@
   --hn-color3: #2ec4b6;
   --hn-color4: #e71d36;
   --hn-color5: #ff9f1c;
+  --hn-color6: #dfdada;
 }
 
 #root {
-  border: 2px solid red;
-  background-color: var(--hn-color1);
+  background-color: var(--hn-color3);
   color: var(--hn-color2);
 }
 
@@ -17,29 +17,16 @@ header {
   line-height: 2.5rem;
 }
 
-form {
-  border: 2px solid rgb(204, 0, 255);
-  border-radius: 0.2em;
-  text-align: center;
+header {
+  margin: 10px;
 }
 
-#searchButton {
-  border: 2px solid #f5cc93;
-  background-color: #ff9f1c;
-  border-radius: 0.2em;
-  text-align: center;
-  color: #fdfffc;
-}
-
-input {
-  border: 2px solid rgb(255, 191, 0);
-  background-color: #f5cc93;
-  width:80%;
-  text-align: center;
+main #hits {
+  margin: 10px;
 }
 
 #hits li:nth-child(even) {
-  background-color: var(--hn-color5);
+  background-color: var(--hn-color6);
 }
 
 #hits li:nth-child(odd) {
