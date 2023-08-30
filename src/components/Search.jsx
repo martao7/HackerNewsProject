@@ -21,7 +21,7 @@ const Search = ({ handleSearch }) => {
         value={inputValue}
         onChange={handleInputChange}
       />
-      <button type="sumbit">Search</button>
+      <button type="sumbit" id="searchButton">Search</button>
     </form>
   );
 };
