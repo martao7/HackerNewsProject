@@ -4,10 +4,11 @@
   --hn-color3: #2ec4b6;
   --hn-color4: #e71d36;
   --hn-color5: #ff9f1c;
+  --hn-color6: #dfdada;
 }
 
 #root {
-  background-color: var(--hn-color1);
+  background-color: var(--hn-color3);
   color: var(--hn-color2);
 }
 
@@ -15,8 +16,16 @@ header {
   line-height: 2.5rem;
 }
 
+header {
+  margin: 10px;
+}
+
+main #hits {
+  margin: 10px;
+}
+
 #hits li:nth-child(even) {
-  background-color: var(--hn-color5);
+  background-color: var(--hn-color6);
 }
 
 #hits li:nth-child(odd) {
