@@ -12,15 +12,18 @@ document.body.style.backgroundColor = "#2ec4b6";
 
 function App() {
   const [hits, setHits] = useState([...myData.hits]);
-  const [pages, setPages] = useState(0);
+  const [page, setPage] = useState(0);
+  const [nbPages, setnbPages] = useState(0);
+  const hitsPerPage = 20;
 
   const handleSearch = async (topic) => {
     const response = await axios.get(
-      `http://hn.algolia.com/api/v1/search_by_date?query=${topic}`
+      `http://hn.algolia.com/api/v1/search_by_date?query=${topic}&tags=story`
     );
     const searchData = response.data;
     setHits(searchData.hits);
-    setPages(searchData.nbHits);
+    setPage(searchData.page);
+    setnbPages(searchData.nbPages);
   };
 
   return (
