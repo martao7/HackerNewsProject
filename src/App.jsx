@@ -14,7 +14,6 @@ function App() {
   const [hits, setHits] = useState([...myData.hits]);
   const [page, setPage] = useState(0);
   const [nbPages, setnbPages] = useState(0);
-  const hitsPerPage = 20;
 
   const handleSearch = async (topic) => {
     const response = await axios.get(
@@ -40,7 +39,7 @@ function App() {
           </div>
         </div>
 
-        <Paginator posts={hits} />
+        <Paginator hits={hits} page={page} nbPages={nbPages} />
       </main>
       <Footer />
     </>
