@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import moment from "moment/moment";
-import React from "react";
 
-function Item({ post, id }) {
+function Item({ hit, id }) {
   function getDomain(url, subdomain) {
     subdomain = subdomain || false;
     url = url.replace(/(https?:\/\/)?(www.)?/i, "");
@@ -14,41 +14,40 @@ function Item({ post, id }) {
     }
     return url;
   }
-  const ago = moment().diff(post.created_at, "hours");
-  //console.log(props);
+  const ago = moment().diff(hit.created_at, "hours");
   return (
     <li className="list-group-item">
       <div id="title text-truncate">
-        <span class="badge rounded-pill text-bg-secondary">{id + 1}</span>
+        <span className="badge rounded-pill text-bg-secondary">{id + 1}</span>
         <div className="d-inline">
           {ago < 12 ? (
-            <span class="badge text-bg-danger mx-2">New</span>
+            <span className="badge text-bg-danger mx-2">New</span>
           ) : (
             <span className="mx-1"></span>
           )}
-          {post.url ? (
+          {hit.url ? (
             <>
               <span>
-                <a href={post.url} target="new">
-                  {post.title}
+                <a href={hit.url} target="new">
+                  {hit.title}
                 </a>
               </span>
-              <small className="px-3">({getDomain(post.url)})</small>
+              <small className="px-3">({getDomain(hit.url)})</small>
             </>
           ) : (
-            <span>{post.title} </span>
+            <span>{hit.title} </span>
           )}
         </div>
       </div>
       <small className="fw-lighter mx-2 ps-4">
-        {post.points} points by {post.author}
+        {hit.points} points by {hit.author}
       </small>
-      <div class="vr"></div>
+      <div className="vr"></div>
       <small className="fw-lighter px-3">
-        {moment(post.created_at).fromNow()}
+        {moment(hit.created_at).fromNow()}
       </small>
-      <div class="vr"></div>
-      <small className="fw-lighter px-3">{post.num_comments} comments</small>
+      <div className="vr"></div>
+      <small className="fw-lighter px-3">{hit.num_comments} comments</small>
     </li>
   );
 }
