@@ -2,17 +2,10 @@
 import moment from "moment/moment";
 
 function Item({ hit, id }) {
-  function getDomain(url, subdomain) {
-    subdomain = subdomain || false;
-    url = url.replace(/(https?:\/\/)?(www.)?/i, "");
-    if (!subdomain) {
-      url = url.split(".");
-      url = url.slice(url.length - 2).join(".");
-    }
-    if (url.indexOf("/") !== -1) {
-      return url.split("/")[0];
-    }
-    return url;
+  function getDomain(url) {
+    return url.match(
+      /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im
+    )[1];
   }
   const ago = moment().diff(hit.created_at, "hours");
   return (
