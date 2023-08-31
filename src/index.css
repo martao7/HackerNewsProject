@@ -31,3 +31,11 @@ main #hits {
 #hits li:nth-child(odd) {
   background-color: var(--hn-color2);
 }
+
+#hits li:nth-child(even):hover {
+  background: rgb(200, 200, 200);
+}
+
+#hits li:nth-child(odd):hover {
+  background: rgb(230, 230, 230);
+}
