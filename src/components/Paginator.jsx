@@ -12,27 +12,34 @@ const Paginator = ({ page, setPage, nbPages }) => {
   return (
     <nav>
       <ul className="pagination">
-        <button
-          className="pagination-button"
-          id="prev"
-          title="Previous page"
-          aria-label="Previous page"
-          onClick={prevPage}
-        >
-          &lt;
-        </button>
+        {page === 0 ? (
+          ""
+        ) : (
+          <button
+            className="pagination-button"
+            id="prev"
+            title="Previous page"
+            aria-label="Previous page"
+            onClick={prevPage}
+          >
+            &lt;
+          </button>
+        )}
 
         <div> {`${page + 1}/${nbPages}`} </div>
-
-        <button
-          className="pagination-button"
-          id="next"
-          title="Next page"
-          aria-label="Next page"
-          onClick={nextPage}
-        >
-          &gt;
-        </button>
+        {page + 1 === nbPages ? (
+          ""
+        ) : (
+          <button
+            className="pagination-button"
+            id="next"
+            title="Next page"
+            aria-label="Next page"
+            onClick={nextPage}
+          >
+            &gt;
+          </button>
+        )}
       </ul>
     </nav>
   );
