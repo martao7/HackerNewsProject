@@ -41,6 +41,7 @@ main #hits {
 }
 
 div.spinner-border {
+  /**/
   width: 6rem;
   height: 6rem;
 }
