@@ -37,5 +37,10 @@ main #hits {
 }
 
 #hits li:nth-child(odd):hover {
-  background: rgb(230, 230, 230);
+  background: rgb(190, 190, 190);
+}
+
+div.spinner-border {
+  width: 6rem;
+  height: 6rem;
 }
