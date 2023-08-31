@@ -1,39 +1,41 @@
-function Paginator() {
+import React from "react";
+
+const Paginator = ({ page, setPage, nbPages }) => {
+  function prevPage() {
+    setPage((prevPage) => prevPage - 1);
+  }
+
+  function nextPage() {
+    setPage((prevPage) => prevPage + 1);
+  }
+
   return (
-    <div className="row">
-      <div className="col">
-        <nav aria-label="Page navigation example">
-          <ul className="pagination">
-            <li className="page-item">
-              <a className="page-link" href="#">
-                Previous
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                1
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                2
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                3
-              </a>
-            </li>
-            <li className="page-item">
-              <a className="page-link" href="#">
-                Next
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+    <nav>
+      <ul className="pagination">
+        <button
+          className="pagination-button"
+          id="prev"
+          title="Previous page"
+          aria-label="Previous page"
+          onClick={prevPage}
+        >
+          &lt;
+        </button>
+
+        <div> {`${page + 1}/${nbPages}`} </div>
+
+        <button
+          className="pagination-button"
+          id="next"
+          title="Next page"
+          aria-label="Next page"
+          onClick={nextPage}
+        >
+          &gt;
+        </button>
+      </ul>
+    </nav>
   );
-}
+};
 
 export default Paginator;

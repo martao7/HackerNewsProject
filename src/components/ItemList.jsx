@@ -12,6 +12,9 @@ function ItemList({ hits, isLoading }) {
       )}
     </ul>
   );
+
+
+
 }
 
 export default ItemList;

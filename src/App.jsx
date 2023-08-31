@@ -7,8 +7,6 @@ import Footer from "./components/Footer";
 import Paginator from "./components/Paginator";
 import ItemList from "./components/ItemList";
 
-document.body.style.backgroundColor = "#2ec4b6";
-
 function App() {
   const [hits, setHits] = useState([]);
   const [topic, setTopic] = useState("");
@@ -36,6 +34,8 @@ function App() {
     setIsLoading(false);
   };
 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <header className="container mt-4">
@@ -54,8 +54,19 @@ function App() {
           </div>
         </div>
 
-        <Paginator hits={hits} page={page} nbPages={nbPages} />
+        {nbPages > 1 ? (
+          <Paginator
+            posts={hits}
+            paginate={paginate}
+            page={page}
+            setPage={setPage}
+            nbPages={nbPages} //max
+          />
+        ) : (
+          ""
+        )}
       </main>
+
       <Footer />
     </>
   );
