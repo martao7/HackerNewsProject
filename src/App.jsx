@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 import Nav from "./components/Nav";
@@ -7,8 +7,6 @@ import Footer from "./components/Footer";
 import Paginator from "./components/Paginator";
 import ItemList from "./components/ItemList";
 import myData from "./fakeData.json";
-
-document.body.style.backgroundColor = "#2ec4b6";
 
 function App() {
   const [hits, setHits] = useState([...myData.hits]);
@@ -26,6 +24,8 @@ function App() {
     setnbPages(searchData.nbPages);
   };
 
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <>
       <header className="container">
@@ -40,8 +40,19 @@ function App() {
           </div>
         </div>
 
-        <Paginator posts={hits} />
+        {nbPages > 1 ? (
+          <Paginator
+            posts={hits}
+            paginate={paginate}
+            page={page}
+            setPage={setPage}
+            nbPages={nbPages} //max
+          />
+        ) : (
+          ""
+        )}
       </main>
+
       <Footer />
     </>
   );
