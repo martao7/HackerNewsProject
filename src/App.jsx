@@ -16,7 +16,7 @@ function App() {
 
   useEffect(() => {
     handleSearch();
-  }, []);
+  }, [page]);
 
   const handleSearch = async () => {
     setIsLoading(true);
@@ -33,8 +33,6 @@ function App() {
     }
     setIsLoading(false);
   };
-
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
