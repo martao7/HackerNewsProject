@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import moment from "moment/moment";
 
-function Item({ hit, id }) {
+function Item({ page, hit, id }) {
   function getDomain(url) {
     return url.match(
       /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n]+)/im
@@ -11,7 +11,9 @@ function Item({ hit, id }) {
   return (
     <li className="list-group-item">
       <div id="title text-truncate">
-        <span className="badge rounded-pill text-bg-secondary">{id + 1}</span>
+        <span className="badge rounded-pill text-bg-secondary">
+          {id + 1 + page * 10}
+        </span>
         <div className="d-inline">
           {ago < 12 ? (
             <span className="badge text-bg-danger mx-2">New</span>

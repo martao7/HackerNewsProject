@@ -14,6 +14,8 @@ function App() {
   const [nbPages, setnbPages] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+  document.body.style = "background: #2ec4b6;";
+
   useEffect(() => {
     handleSearch();
   }, [page]);
@@ -47,19 +49,13 @@ function App() {
             {!hits.length && !isLoading ? (
               "No search results"
             ) : (
-              <ItemList hits={hits} isLoading={isLoading} />
+              <ItemList hits={hits} isLoading={isLoading} page={page} />
             )}
           </div>
         </div>
 
         {nbPages > 1 ? (
-          <Paginator
-            posts={hits}
-            paginate={paginate}
-            page={page}
-            setPage={setPage}
-            nbPages={nbPages} //max
-          />
+          <Paginator page={page} setPage={setPage} nbPages={nbPages} />
         ) : (
           ""
         )}

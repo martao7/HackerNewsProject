@@ -7,21 +7,15 @@
   --hn-color6: #dfdada;
 }
 
-* {
-  background-color: #ff9f1c;
-}
-
 #root {
-  background-color:#ff9f1c;
+  background-color: var(--hn-color3);
   color: var(--hn-color2);
 }
 
 header {
-  border: 2px solid rgb(47, 255, 0);
   line-height: 2.5rem;
   margin: 10px;
 }
-
 
 main #hits {
   margin: 10px;
