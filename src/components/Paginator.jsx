@@ -26,7 +26,7 @@ const Paginator = ({ page, setPage, nbPages }) => {
           </button>
         )}
 
-        <div> {`${page + 1}/${nbPages}`} </div>
+        <div id="sites"> {` ${page + 1} / ${nbPages} `} </div>
         {page + 1 === nbPages ? (
           ""
         ) : (
